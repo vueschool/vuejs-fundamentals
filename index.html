@@ -7,8 +7,7 @@
     </head>
     <body>
         <div id="shopping-list">
-            <h1>{{ header }}</h1>
-            <input v-model="header">
+            <h1>{{ header.toLocaleUpperCase() }}</h1>
         </div>
 
         <script src="https://unpkg.com/vue"></script>
@@ -16,7 +15,7 @@
             var shoppingList = new Vue({
                 el: '#shopping-list',
                 data: {
-                    header: 'Vue is ready to party',
+                    header: 'shopping list app',
                 }
             })
         </script>

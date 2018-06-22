@@ -17,7 +17,7 @@
                 <button class="btn btn-primary" :disabled="newItem.length === 0" @click="saveItem">Save Item</button>
             </div>
             <ul>
-                <li v-for="item in items">{{ item }}</li>
+                <li v-for="item in items" :class="{strikeout: item.purchased}" @click="togglePurchased(item)">{{ item.label }}</li>
             </ul>
             <p v-if="items.length === 0">Nice job! You've bought all your items.</p>
         </div>
@@ -30,19 +30,37 @@
                     header: 'shopping list app',
                     newItem: '',
                     items: [
-                        '10 party hats',
-                        '2 board games',
-                        '20 cups',
+                        {
+                            label: '10 party hats',
+                            purchased: false,
+                            highPriority: false,
+                        },
+                        {
+                            label: '2 board games',
+                            purchased: true,
+                            highPriority: false,
+                        },
+                        {
+                            label: '20 cups',
+                            purchased: false,
+                            highPriority: false,
+                        },
                     ]
                 },
                 methods: {
                     saveItem: function() {
-                        this.items.push(this.newItem);
+                        this.items.push({
+                            label: this.newItem,
+                            purchased: false,
+                        });
                         this.newItem = '';
                     },
-                    changeState: function (newState) {
+                    changeState: function(newState) {
                         this.state = newState;
                         this.newItem = '';
+                    },
+                    togglePurchased: function(item) {
+                        item.purchased = !item.purchased;
                     }
                 }
             })

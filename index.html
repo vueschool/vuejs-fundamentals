@@ -8,7 +8,10 @@
     <body>
         <div id="shopping-list">
             <h1>{{ header.toLocaleUpperCase() }}</h1>
-            <input v-model="newItem" type="text" placeholder="Add an item">
+            <div class="add-item-form">
+                <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="items.push(newItem)">
+                <button class="btn btn-primary" @click="items.push(newItem)">Save Item</button>
+            </div>
             <ul>
                 <li v-for="item in items">{{ item }}</li>
             </ul>

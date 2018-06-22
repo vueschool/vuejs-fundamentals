@@ -9,8 +9,8 @@
         <div id="shopping-list">
             <h1>{{ header.toLocaleUpperCase() }}</h1>
             <div class="add-item-form">
-                <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="items.push(newItem)">
-                <button class="btn btn-primary" @click="items.push(newItem)">Save Item</button>
+                <input v-model="newItem" type="text" placeholder="Add an item" @keyup.enter="saveItem">
+                <button class="btn btn-primary" @click="saveItem">Save Item</button>
             </div>
             <ul>
                 <li v-for="item in items">{{ item }}</li>
@@ -28,6 +28,12 @@
                         '2 board games',
                         '20 cups',
                     ]
+                },
+                methods: {
+                    saveItem: function() {
+                        this.items.push(this.newItem);
+                        this.newItem = '';
+                    }
                 }
             })
         </script>

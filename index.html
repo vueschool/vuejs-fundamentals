@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Shopping List App</title>
         <link rel="stylesheet" href="main.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     </head>
     <body>
         <div id="shopping-list">
@@ -21,7 +22,7 @@
             </ul>
             <p v-if="items.length === 0">Nice job! You've bought all your items.</p>
         </div>
-        <script src="https://unpkg.com/vue"></script>
+        
         <script>
             var shoppingList = new Vue({
                 el: '#shopping-list',
